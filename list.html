@@ -116,7 +116,45 @@
 			<mark>remember to show the datepicker dialog using .show() method</mark>
 		  </article>
 		  <!-- Fourth learning-->
-		  
+		  <div>Intent</div>
+		  <div>used to travel from sreen to screen (or strictly speaking to start and stop an activiry)</div>
+		  <article>
+			<code>Syntax</code>
+			<code>
+			  val intent = Intent(context,targetActivityClass::class.java)
+			</code>
+			<code>
+			  to use this intent use
+			  startActiviry(intent)
+			  <mark>
+				if you don't want to come back to this activiry then add
+
+				<i>finish()</i> method after this line this will end this activity and whenever the user persss the back button it will close
+				the app 
+			  </mark>
+			  <code>
+				you can  put some exrra data from activify 1 to activitie 2 using
+				<code>
+				  intent.putExtra("key",Any)
+				</code>
+				method which takes key value pair key is "string"
+				and value can be any value
+			  </code>
+			</code>
+			<div>
+			  <mark>intent</mark> is an globaly avaiable objecet when started by other activity which holds intent of activity thar started it
+			  <mark>this intent can be used to retrive value passed be startng intent</mark>
+			  <code>
+				intent.get<i>Type</i>Extra("key",defaultValueWhenNoValueFound)
+			  </code>
+			</div>
+		  </article>
+		</div>
+		<div>
+		 Color.parseColor("#hexcolor") 
+		</div>
+		<div>
+		  this can be used to parse color to int as in android colors and images are <mark>pereferably </mark>stored in int
 		</div>
 	  </section>
 	</div>
