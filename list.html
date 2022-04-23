@@ -1,0 +1,126 @@
+<Html>
+  <head>
+
+	<style>
+	  body{
+		  margin:0px;
+		  background-color:#575757;
+		  padding:2rem;
+	  }
+	</style>
+  </head>
+  <body>
+	<div>
+	  <section>
+		<div>Title</div>
+		<div>Use</div>
+		<div>Implementation</div>
+		<!-- first learning-->
+		<div>Activity</div>
+		<div>Every Screen is an activity</div>
+		<div>
+		  <article>
+			It is used to create any screen in android points to notice are
+			<ul>
+			  <li>
+				we extend <code>>AppCompatActivity</code> class to make it activity
+			  </li>
+			  <li>
+				we override onCreate(savedInstanceState: Bundle?) function of <code>AppCompatActiviry</code> class 
+			  </li>
+			  <li>
+				finally we
+				set the contest view of this particular activity using
+				<code>setContentView(R.layout.activity_main)</code>
+				here <code>R.layout.activity_main</code> is name of an xml file in <code>layout </code> directory of <code>res (resource)</code> folder
+			  </li>
+			  <li>
+				setContentView is an Activity method only. Each Activity is provided with a FrameLayout with id "@+id/content" (i.e. the content view). Whatever view you
+				specify in setContentView will be the view for that Activity.
+				setContentView() is used to set the layout of a particular activiry
+			  </li>
+			</ul>
+		  </article>
+		  <code>
+			class MainActivity : AppCompatActivity() {
+				override fun onCreate(savedInstanceState: Bundle?) {
+					super.onCreate(savedInstanceState)
+					setContentView(R.layout.activity_main)
+				}
+			}
+			</code>
+		</div>
+		<!--second learning-->
+		<div>
+		  Toast
+		</div>
+		<div>
+		  A simple notifiaction view (every item or widget in android is a view) use to show small notification on screen for some time
+		</div>
+		<div>
+		  <article>
+			Syntax
+			<code>
+			Toast.makeText(context,message,lengthOfToast).show()
+			</code>
+			example
+			<code>
+			Toast.makeText(this,"some message",Toast.LENGTH_LONG).show()
+			</code>
+			<mark>
+			  toast will still persist even activiry is closed till its time 
+			</mark>
+			<mark>
+			  it is required to show the toast using .show() method or your efforts will go to vain
+			</mark>
+		  </article>
+		</div>
+		<!-- Third learning-->
+		<div>
+		  DatePickerDialog
+		</div>
+		<div>
+		  It is used to show date picker in android
+		  here you explicitly need to create object of <code>DatePickerDialog</code> class
+		  </div>
+		<div>
+		  <article>
+			<code>
+				DatePickerDialog(this,{ _, yearNow,monthNow,dayNow -> do something},year,month,day)		<br>
+				here '_' is used as it represent unused parameter passed to function
+			</code>
+			<code>
+				DatePickerDialog(this,{ _, yearNow,monthNow,dayNow -> do something},year,month,day)		
+				</code>
+			<mark>
+			  date picker dialog takes context as first argument {as almost all functions take 'this' or any form of context}
+			  a callback lamda as second argument which will be called with data,month,and year as argument
+			  then you are free to do whataver you want to do with those arguments 
+			  <ul>
+				<li>it takes a total of 5 arguments</li>
+				<li>context</li>
+				<li>lamda callback</li>
+				<li>day current</li>
+				<li>month</li>
+				<li>year</li>
+			  </ul>
+			</mark>
+			<div>
+			  you can ristrict limit of date be setting
+			  <code>datePickerDialogObject.datePicker.maxDate = time in miliseconds from 1st jan 1980</code>
+			  example
+			  <code>
+				dpd.datePicker.maxDate = System.currentTimeMillis() - 86400000
+			  </code>
+			</div>
+			<mark>remember to show the datepicker dialog using .show() method</mark>
+		  </article>
+		  <!-- Fourth learning-->
+		  
+		</div>
+	  </section>
+	</div>
+  </body>
+</html>
+
+Acked-by: Akash Sinha <akashlj2@gmail.com>
