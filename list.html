@@ -156,7 +156,84 @@
 		<div>
 		  this can be used to parse color to int as in android colors and images are <mark>pereferably </mark>stored in int
 		</div>
-	  </section>
+		<article>
+		  <code>request for permission</code>
+
+		  <div>
+//create ActivityResultLauncher<String> for single permission
+	    val galllaryResultLauncher: ActivityResultLauncher<String> = registerForActivityResult(
+
+	//use RequestPermission for single permission
+	//use RequestMultiplePermission for  multiple permissions
+
+        ActivityResultContracts.RequestPermission()
+				//isGranted:Boolean is returned if one permission
+				//returns Mutable<Map<String>> if multiple permissions
+				 //which can be accessed with values.entries.key and valuse.entries.value
+				  //which can be furthur matched with indivisual permission [kay]
+				  //and whether it is allowed in [value] 
+				
+    ) { isGranted ->
+        if (isGranted) Snackbar.make(
+            binding.gallaryId,
+            "granted do your work",
+            Snackbar.LENGTH_LONG
+        ).show() else {
+            Snackbar.make(
+                binding.gallaryId,
+                "sorry you were not granted permission",
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
+    }
+
+
+
+				  in main acitvity add
+
+
+if (SDK_INT >= Build.VERSION_CODES.M && shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                showRationalDialog(
+                    "permissin not granted",
+                    "please grant the permission to use the app"
+                )
+            } else {
+                galllaryResultLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+
+		  </div>
+		</article>
+
+		<article>
+		  <code>
+			code for adding images
+		  </code>
+		  <div>
+			//before anyting we need gallery permission i.e. READ_EXTERNAL_STORAGE
+			//after that create another ActivityResultLauncher<Intent> here type will be intent instead of String of ListOf String 
+			 //code this 
+    val imageRequestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+       result ->
+        if(result.resultCode == RESULT_OK && result.data != null){
+            binding.imageView.setImageURI(result.data?.data)
+        }
+    }
+
+				//in main activity add this
+
+  val intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+				//here we check if application has access to permission or not befor
+				//actully trying to use gallery
+    if(ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                imageRequestLauncher.launch(intent)
+            }
+
+		  </div>
+		</article>
+ </section>
+
 	</div>
   </body>
 </html>
